@@ -1,0 +1,14 @@
+[project]
+name = "ouspark-docs"
+version = "0.1.0"
+description = "OuSpark - Automated Results Analytics System"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mkdocs-git-committers-plugin-2>=2.5.0",
+    "mkdocs-git-revision-date-localized-plugin>=1.4.7",
+    "mkdocs-material>=9.6.16",
+    "mkdocs-minify-plugin>=0.8.0",
+    "mkdocs-video>=1.5.0",
+    "neoteroi-mkdocs>=1.1.2",
+]
