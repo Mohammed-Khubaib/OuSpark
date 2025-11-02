@@ -1,0 +1,376 @@
+:root {
+  --black: #000000; /**/
+  --white: #ffffff; /*text color*/
+  --white-2: #9EA3A2; /*text color*/
+  --radiate: #55D799; /* text*/
+  --cosmic: #3ffff2; /* text glow*/
+  --flare: #1e35ab;
+  --rock: #78876e;
+  --galaxy: #0B0D0E; /*Main Background*/ 
+  --space: #0B0D0E; /*header*/
+  --code-block-border: #242627; /*code block border*/
+  --code-block: #17191A; /*code block*/
+  --comet: #c300c3;
+  --sun: #ffac2f;
+  --electron: #02cec0;
+  /* --aurora: #46eb74; */
+  /* --constellation: #5fe97b; */
+  --neutron: #cff3cf;
+  /* --proton: #f6afbc; */
+  /* --nebula: #eb1717; */
+  --supernova: #ff8707;
+  --starlight: #00fbc9;
+  /* --lunar: #b301c6; */
+  --asteroid: #6A9956; /*comments in code blocks*/
+  /* --crater: #c30000; */
+}
+
+[data-md-color-scheme="astral-light"] {
+  --md-default-bg-color--dark: var(--black);
+  --md-primary-fg-color: var(--galaxy);
+  --md-typeset-a-color: var(--flare);
+  --md-accent-fg-color: var(--cosmic);
+}
+
+[data-md-color-scheme="astral-dark"] {
+  --md-default-bg-color: var(--galaxy);
+  --md-default-fg-color: var(--white);
+  --md-default-fg-color--light: var(--white);
+  --md-default-fg-color--lighter: var(--white);
+  --md-primary-fg-color: var(--space);
+  --md-primary-bg-color: var(--white);
+  --md-accent-fg-color: var(--white);
+
+  --md-typeset-color: var(--white-2);
+  
+  --md-typeset-a-color: var(--radiate);
+  --md-typeset-mark-color: var(--sun);
+
+  --md-code-fg-color: var(--white);
+  --md-code-bg-color: var(--code-block-);
+
+  --md-code-hl-comment-color: var(--asteroid);
+  --md-code-hl-punctuation-color: var(--asteroid);
+  --md-code-hl-generic-color: var(--supernova);
+  --md-code-hl-variable-color: var(--starlight);
+  --md-code-hl-string-color: var(--radiate);
+  --md-code-hl-keyword-color: var(--supernova);
+  --md-code-hl-operator-color: var(--supernova);
+  --md-code-hl-number-color: var(--electron);
+  --md-code-hl-special-color: var(--comet);
+  --md-code-hl-function-color: var(--neutron);
+  --md-code-hl-constant-color: var(--radiate);
+  --md-code-hl-name-color: var(--md-code-fg-color);
+
+  --md-typeset-del-color: hsla(6, 90%, 60%, 0.15);
+  --md-typeset-ins-color: hsla(150, 90%, 44%, 0.15);
+
+  --md-typeset-table-color: hsla(0, 0%, 100%, 0.12);
+  --md-typeset-table-color--light: hsla(0, 0%, 100%, 0.035);
+}
+
+[data-md-color-scheme="astral-light"] img[src$="#only-dark"],
+[data-md-color-scheme="astral-light"] img[src$="#gh-dark-mode-only"] {
+  display: none; /* Hide dark images in light mode */
+}
+
+[data-md-color-scheme="astral-light"] img[src$="#only-light"],
+[data-md-color-scheme="astral-light"] img[src$="#gh-light-mode-only"] {
+  display: inline; /* Show light images in light mode */
+}
+
+[data-md-color-scheme="astral-dark"] img[src$="#only-light"],
+[data-md-color-scheme="astral-dark"] img[src$="#gh-light-mode-only"] {
+  display: none; /* Hide light images in dark mode */
+}
+
+[data-md-color-scheme="astral-dark"] img[src$="#only-dark"],
+[data-md-color-scheme="astral-dark"] img[src$="#gh-dark-mode-only"] {
+  display: inline; /* Show dark images in dark mode */
+}
+
+/* See: https://github.com/squidfunk/mkdocs-material/issues/175#issuecomment-616694465 */
+.md-typeset__table {
+  min-width: 100%;
+}
+.md-typeset table:not([class]) {
+  display: table;
+}
+
+/* See: https://github.com/astral-sh/ruff/issues/8519 */
+[data-md-color-scheme="astral-dark"] details summary a {
+  color: var(--flare);
+}
+
+/* See: https://github.com/astral-sh/ruff/issues/9046 */
+[data-md-color-scheme="astral-dark"] div.admonition {
+  color: var(--md-code-fg-color);
+  background-color: var(--md-code-bg-color);
+}
+
+/* Prevent the shadow from the nav title from blurring the top link.
+The box shadow isn't really doing anything anyway.
+
+This is a consequence of the reduced nav spacing below. */
+.md-nav--primary .md-nav__title {
+  box-shadow: none;
+}
+
+/* Omits the nav title "uv" entirely unless on a small screen, in which case
+the nav title is needed for backwards navigation in the collapsible
+nav variant.
+
+See https://github.com/astral-sh/uv/issues/5130 */
+@media screen and (min-width: 76.25em) {
+  .md-nav__title {
+    display: none;
+  }
+}
+
+
+/* Always take the full screen for content, require scrolling to see the footer
+This stops the size of the nav from jumping around when you visit a page without
+a lot of content (i.e., an overview page). We don't apply this to sma screens
+because the nav is in a hamburger menu anyway
+*/
+@media screen and (min-width: 76.25em) {
+  .md-main {
+    min-height: 100vh;
+  }
+}
+
+/* Tweak the formatting of the primary nav on a large screen */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary .md-nav {
+    font-size: 0.75rem;
+  }
+  /* Remove the bold from the section headings, use a larger font instead */
+  .md-nav__item--section > .md-nav__link {
+      font-weight: normal;
+      font-size: 0.85rem;
+  }
+  /* Reducing spacing between nav items to fit more content 
+  First, disable `nav__link` spacing then use `nav__item` to enforce margins this reduces inconsistencies in the spacing. */
+  .md-nav--primary .md-nav__link {
+    margin: 0;
+  }
+  .md-nav--primary .md-nav__item {
+    margin-top: 0.35em;
+  }
+  /* Use larger spacing for the sections headings */
+  .md-nav--primary .md-nav__item--section {
+    margin-bottom: 0.75em;
+    margin-top: 1em;
+  }
+  /* Decrease the font size of items in a collapsible section */
+  .md-nav__item--section> .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list {
+    font-size: 0.725rem;
+  }
+  /* Increase top margin on the first item of a collapsible section */
+  .md-nav__item--section> .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list > .md-nav__item:first-of-type {
+    margin-top: 0.5em;
+  }
+  /* Increase bottom margin on the last item of a collapsible section */
+  .md-nav__item--section> .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list > .md-nav__item:last-of-type {
+    margin-bottom: 0.575em;
+  }
+  /* Increase the size of the first nav item to match the sections 
+  It has no children, so it is not considered a section */
+  .md-nav--primary > .md-nav__list > .md-nav__item:first-of-type {
+    font-size: 0.85rem;
+    margin-bottom: 0.75em; 
+  }
+}
+
+/* Bold the active nav link for accessibility */
+.md-nav__link--active {
+  font-weight: bold;
+}
+
+/* See: https://mkdocstrings.github.io/recipes/#prevent-selection-of-prompts-and-output-in-python-code-blocks */
+.highlight .gp, .highlight .go { /* Generic.Prompt, Generic.Output */
+  user-select: none;
+}
+
+/* Styling for the generated CLI reference page */
+.cli-reference dd {
+  margin-top: 0.1em;
+  margin-bottom: 0.5em;
+}
+.cli-reference dd p {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.3em;
+}
+.cli-reference ul {
+  margin-bottom: 0.1em;
+}
+h3.cli-reference {
+  font-size: 1.1em;
+  margin: 0 0 0 0;
+}
+
+/* Styling for anchor link headers */
+.toclink {
+  color: unset !important;
+}
+
+.toclink:hover {
+  color: var(--md-accent-fg-color) !important;
+}
+
+/* Omit the first breadcrumb item, which is the "Introduction" */
+.md-path__list > .md-path__item:first-of-type {
+  display: none;
+}
+.md-path__list > .md-path__item:nth-of-type(2):before {
+  display: none;
+}
+
+/* Hide the modified date — its positioning is awkward but will require theme
+modifications */
+.md-source-file__fact {
+  visibility: hidden;
+}
+
+/* My changes */
+
+/* Custom heading and text colors */
+[data-md-color-scheme="astral-dark"] .md-typeset h1,
+[data-md-color-scheme="astral-dark"] .md-typeset h2,
+[data-md-color-scheme="astral-dark"] .md-typeset h3,
+[data-md-color-scheme="astral-dark"] .md-typeset h4,
+[data-md-color-scheme="astral-dark"] .md-typeset h5,
+[data-md-color-scheme="astral-dark"] .md-typeset h6 {
+  color: var(--white) !important;
+}
+
+/* Ensure all regular text uses white-2 */
+[data-md-color-scheme="astral-dark"] .md-typeset p,
+[data-md-color-scheme="astral-dark"] .md-typeset li,
+[data-md-color-scheme="astral-dark"] .md-typeset td,
+[data-md-color-scheme="astral-dark"] .md-typeset th,
+[data-md-color-scheme="astral-dark"] .md-typeset blockquote,
+[data-md-color-scheme="astral-dark"] .md-typeset dd,
+[data-md-color-scheme="astral-dark"] .md-typeset dt {
+  color: var(--white-2);
+}
+
+/* Navigation headings should also be white
+[data-md-color-scheme="astral-dark"] .md-nav__title,
+[data-md-color-scheme="astral-dark"] .md-nav__item--section > .md-nav__link {
+  color: var(--white) !important;
+} */
+
+/* Enhanced code block styling with borders and custom colors */
+[data-md-color-scheme="astral-dark"] .md-typeset pre,
+[data-md-color-scheme="astral-dark"] .md-typeset code {
+  /* Custom background and text colors */
+  --md-code-bg-color: var(--space); /* Black background */
+  --md-code-fg-color: var(--white-2); /* White text */
+}
+
+/* Code block container with border */
+[data-md-color-scheme="astral-dark"] .md-typeset pre {
+  border: 1px solid var(--code-block-border); /* Cyan border */
+  border-radius: 20px;
+  padding: 0.4em;
+  margin: 1em 0;
+  box-shadow: var(--white-2);
+}
+
+/* Inline code styling */
+[data-md-color-scheme="astral-dark"] .md-typeset p code ,
+/* [data-md-color-scheme="astral-dark"] .md-typeset li code, */
+[data-md-color-scheme="astral-dark"] .md-typeset td code {
+  background-color: var(--code-block);
+  color: var(--starlight);
+  /* border: 1px solid var(--cosmic); */
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+
+
+/* Content tabs styling for astral-dark theme */
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-labels > label {
+  color: var(--white-2); /* Default tab text color */
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover state for tabs */
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-labels > label:hover {
+  color: var(--radiate) !important; /* Hover text color */
+  background-color: rgba(227, 206, 227, 0.1) !important; /* Light radiate background */
+  border-bottom-color: var(--radiate) !important;
+}
+
+/* Active/selected tab */
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-labels > label[aria-selected="true"],
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-labels > input:checked + label {
+  color: var(--radiate) !important; /* Active tab text in asteroid color */
+  background-color: rgba(227, 206, 227, 0.15) !important; /* Semi-transparent asteroid background */
+  border-bottom-color: var(--radiate) !important; /* Asteroid bottom border */
+  font-weight: 600;
+}
+
+/* Tab container styling */
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-set {
+  border: 1px solid var(--code-block-border);
+  border-radius: 20px;
+  background-color: var(--galaxy);
+  margin: 1em 0;
+  overflow: hidden;
+}
+
+/* Tab header container */
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-labels {
+  background-color: var(--space);
+  border-bottom: 1px solid var(--code-block-border);
+  display: flex;
+  overflow-x: auto;
+}
+
+/* Tab content area */
+[data-md-color-scheme="astral-dark"] .md-typeset .tabbed-content {
+  background-color: var(--galaxy);
+  padding: 0.2rem;
+}
+
+[data-md-color-scheme="astral-dark"] .md-typeset hr {
+  border-top: 1px solid var(--code-block-border);
+}
+
+[data-md-color-scheme="astral-light"] .md-typeset hr {
+  border-top: 1px solid #333; /* adjust for visibility in light mode */
+}
+
+[data-md-color-scheme="astral-dark"] .md-typeset li {
+  color: var(--white-2); /* list text */
+}
+
+/* Style only the bullet or number using ::marker */
+[data-md-color-scheme="astral-dark"] .md-typeset li::marker {
+  color: var(--white); /* bullet or number */
+}
+
+[data-md-color-scheme="astral-dark"] .md-typeset strong,
+[data-md-color-scheme="astral-dark"] .md-typeset b {
+  color: var(--white) !important;
+}
+
+
+.canvas-container {
+  width: 100%;
+  max-width: 2160px;
+  aspect-ratio: 2160 / 1350;
+  margin: auto;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
